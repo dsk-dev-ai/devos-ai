@@ -1,0 +1,11 @@
+{
+  "name": "DevOS AI",
+  "dockerComposeFile": "../infrastructure/docker-compose.yml",
+  "service": "ai-engine",
+  "workspaceFolder": "/workspace",
+  "settings": {},
+  "extensions": [
+    "ms-python.python",
+    "ms-azuretools.vscode-docker"
+  ]
+}

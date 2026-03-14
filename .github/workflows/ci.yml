@@ -11,21 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install Python dependencies
-        run: |
+      - run: |
           pip install -r requirements.txt
           pip install pytest
 
-      - name: Run tests
-        run: |
+      - run: |
           pytest || echo "No tests yet"
 
       - name: Setup Node
@@ -33,12 +30,6 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install frontend deps
-        working-directory: frontend
-        run: |
+      - run: |
+          cd frontend
           npm install || true
-
-      - name: Rust setup
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable

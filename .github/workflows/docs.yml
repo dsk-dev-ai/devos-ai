@@ -6,21 +6,17 @@ on:
 
 jobs:
   build-docs:
-
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install mkdocs
-        run: |
+      - run: |
           pip install mkdocs mkdocs-material
 
-      - name: Build docs
-        run: |
-          mkdocs build --config-file docs/site/mkdocs.yml || echo "Docs not ready yet"
+      - run: |
+          mkdocs build -f docs/mkdocs.yml || echo "Docs not ready"
