@@ -111,22 +111,28 @@ devos-ai/
 
 ### Setup
 
-```bash
 git clone https://github.com/dsk-dev-ai/devos-ai.git
 cd devos-ai
 pip install -r requirements.txt
-⚡ Usage
+
+## ⚡ Usage
+
 🔍 Explain Codebase
 python3 -m cli.main explain .
+
 🔎 Search Code
 python3 -m cli.main search . "engine"
+
 🐞 Debug Error
 python3 -m cli.main debug error.log
+
 🧠 Choose Model
 python3 -m cli.main explain . --model openrouter
 python3 -m cli.main explain . --model google
 python3 -m cli.main explain . --model auto
-🧠 Example Output
+
+## 🧠 Example Output
+
 1. Purpose
 CLI-based AI tool for analyzing codebases...
 
@@ -137,40 +143,39 @@ CLI → Core → LLM → Output
 - CLI
 - Core Engine
 - LLM Provider
-📸 Demo
 
-Add your screenshots in assets/images/
+### Example:
+At (assets/images/) & (assets/videos/)
 
-assets/images/explain.png
-assets/images/search.png
-assets/images/debug.png
+## 🚀 Roadmap
 
-Example:
-
-![Explain](assets/images/explain.png)
-🚀 Roadmap
 ✅ V2 (Current)
 CLI-based code analyzer
 Context ranking system
 Multi-LLM support
 Search + Debug commands
+
 🔜 V3 (Upcoming)
 🔍 Advanced file-level search
 🐞 Smart stack trace debugging
 ⚡ RAG (vector search)
 📦 Global CLI install (devos)
 🌐 Web dashboard
-⚙️ Configuration
+
+## ⚙️ Configuration
 
 Create .env file:
 
 OPENROUTER_API_KEY=your_key
 GOOGLE_API_KEY=your_key
-📦 Dependencies
+
+## 📦 Dependencies
+
 Python standard library
 requests
 python-dotenv
-🤝 Contributing
+
+## 🤝 Contributing
 
 Contributions are welcome!
 
@@ -180,7 +185,9 @@ Improving context extraction
 Enhancing LLM prompts
 Adding new CLI features
 UI/UX improvements
-🛠 Troubleshooting
+
+## 🛠 Troubleshooting
+
 1. LLM not working
 Check API keys in .env
 Verify internet connection
@@ -190,18 +197,19 @@ Check file permissions
 3. Timeout / Slow response
 Reduce context size
 Check API limits
-📜 License
+
+## 📜 License
 
 This project is licensed under the MIT License.
 
-👨‍💻 Author
+## 👨‍💻 Author
 
 Darshan Kachare
 AI Developer • Open Source Contributor
 
 GitHub: https://github.com/dsk-dev-ai
 
-⭐ Support
+## ⭐ Support
 
 If you find this useful:
 
