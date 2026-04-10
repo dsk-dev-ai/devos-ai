@@ -217,8 +217,12 @@ If you find this useful:
 🐛 Report issues
 🤝 Contribute
 🚀 Project Status
-🔥 Production-ready CLI
-🔥 Recruiter-friendly
-🔥 Scalable foundation
+
+## 🚧 Project Status
+
+- Experimental CLI-based AI tool
+- Actively under development (v2)
+- Focused on improving context extraction and LLM reasoning
+- Suitable for learning and experimentation
 
 ---
