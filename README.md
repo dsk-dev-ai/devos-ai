@@ -1,228 +1,73 @@
 # 🚀 DevOS AI
 
-CLI-based AI tool for analyzing and explaining codebases using structured context extraction and LLM reasoning.
+DevOS AI is a developer-first assistant for understanding codebases faster using structured context extraction and LLM reasoning.
 
----
+## ✅ Release Status
 
-## ✨ Introduction
+**Current release: v3.0.0**
 
-DevOS AI is a developer-first tool designed to help engineers quickly understand unfamiliar codebases.
+v3 introduces a direct replacement of the legacy context engine with a smarter ranking pipeline, advanced CLI controls, and better output structure for explain workflows.
 
-Instead of manually reading hundreds of files, DevOS intelligently extracts relevant parts of a repository, builds structured context, and uses Large Language Models (LLMs) to generate clear, high-level explanations of architecture and functionality.
+## 🔥 What’s New in v3
 
----
+- Advanced context ranking with weighted file scoring.
+- Direct replacement of the old prompt builder with a stricter “facts vs inference” response format.
+- New `core/v3/` module for maintainable architecture.
+- New CLI controls: `--max-files`, `--max-chars`, `--include-tests`, and `--json`.
+- Improved explain command output with selected file visibility.
 
-## 📚 Table of Contents
+## 📦 Project Structure
 
-- Overview
-- Features
-- How It Works
-- Architecture
-- Project Structure
-- Installation
-- Usage
-- Example Output
-- Demo
-- Roadmap
-- Configuration
-- Dependencies
-- Contributing
-- Troubleshooting
-- License
-- Author
-
----
-
-## 🔍 Overview
-
-DevOS AI transforms codebases into understandable insights by combining:
-
-- Smart file selection
-- Context-aware prompt generation
-- LLM-powered reasoning
-
-👉 It acts like a **codebase explainer engine**, helping developers onboard faster and debug smarter.
-
----
-
-## 🔥 Features
-
-- 🔍 Analyze any codebase using AI  
-- 🧠 Structured context extraction  
-- 🏗 Architecture-level explanations  
-- ⚙️ Modular design (CLI + Core + LLM)  
-- 🌐 Multi-LLM support (OpenRouter + Google)  
-- 💻 CLI-first developer experience  
-
----
-
-## 🧠 How It Works
-
-### Pipeline
-
-
-CLI → Context Builder → Prompt Engine → LLM → Output
-
-
-### Step-by-Step
-
-1. Extract important files from the repository  
-2. Rank and filter relevant code  
-3. Build structured context  
-4. Generate optimized prompts  
-5. Send to LLM for reasoning  
-6. Output structured explanation  
-
----
-
-## 🏗 Architecture
-
-| Module | Description |
-|--------|------------|
-| `cli/` | Command-line interface |
-| `core/` | Context building + prompt generation |
-| `llm/` | LLM provider integration |
-
----
-
-## 📂 Project Structure
-
-
+```text
 devos-ai/
 ├── cli/
 ├── core/
+│   └── v3/
 ├── llm/
 ├── agents/
 ├── apps/
 ├── frontend/
 ├── infrastructure/
 ├── docs/
-├── scripts/
-
-
----
+└── scripts/
+```
 
 ## ⚙️ Installation
 
-### Prerequisites
-
-- Python 3.9+
-- API key (OpenRouter or Google Gemini)
-
-### Setup
-
+```bash
 git clone https://github.com/dsk-dev-ai/devos-ai.git
 cd devos-ai
 pip install -r requirements.txt
+```
 
 ## ⚡ Usage
 
-🔍 Explain Codebase
-python3 -m cli.main explain .
+### Explain a repository
 
-🔎 Search Code
-python3 -m cli.main search . "engine"
-
-🐞 Debug Error
-python3 -m cli.main debug error.log
-
-🧠 Choose Model
-python3 -m cli.main explain . --model openrouter
-python3 -m cli.main explain . --model google
+```bash
 python3 -m cli.main explain . --model auto
+python3 -m cli.main explain . --max-files 12 --max-chars 2000
+python3 -m cli.main explain . --include-tests --json
+```
 
-## 🧠 Example Output
+### Search code
 
-1. Purpose
-CLI-based AI tool for analyzing codebases...
+```bash
+python3 -m cli.main search . "engine"
+```
 
-2. Architecture Overview
-CLI → Core → LLM → Output
+### Debug an error file
 
-3. Key Components
-- CLI
-- Core Engine
-- LLM Provider
+```bash
+python3 -m cli.main debug error.log
+```
 
-### Example:
-At (assets/images/) & (assets/videos/)
+## 🛣️ Roadmap
 
-## 🚀 Roadmap
-
-✅ V2 (Current)
-CLI-based code analyzer
-Context ranking system
-Multi-LLM support
-Search + Debug commands
-
-🔜 V3 (Upcoming)
-🔍 Advanced file-level search
-🐞 Smart stack trace debugging
-⚡ RAG (vector search)
-📦 Global CLI install (devos)
-🌐 Web dashboard
-
-## ⚙️ Configuration
-
-Create .env file:
-
-OPENROUTER_API_KEY=your_key
-GOOGLE_API_KEY=your_key
-
-## 📦 Dependencies
-
-Python standard library
-requests
-python-dotenv
-
-## 🤝 Contributing
-
-Contributions are welcome!
-
-You can help with:
-
-Improving context extraction
-Enhancing LLM prompts
-Adding new CLI features
-UI/UX improvements
-
-## 🛠 Troubleshooting
-
-1. LLM not working
-Check API keys in .env
-Verify internet connection
-2. No output
-Ensure valid project path
-Check file permissions
-3. Timeout / Slow response
-Reduce context size
-Check API limits
+- ✅ v3: advanced context engine and richer CLI controls.
+- 🔜 v3.x: smarter semantic retrieval and local embedding cache.
+- 🔜 v4: interactive web dashboard with collaborative review mode.
 
 ## 📜 License
 
-This project is licensed under the MIT License.
-
-## 👨‍💻 Author
-
-Darshan Kachare
-AI Developer • Open Source Contributor
-
-GitHub: https://github.com/dsk-dev-ai
-
-## ⭐ Support
-
-If you find this useful:
-
-⭐ Star the repository
-🐛 Report issues
-🤝 Contribute
-🚀 Project Status
-
-## 🚧 Project Status
-
-- Experimental CLI-based AI tool
-- Actively under development (v2)
-- Focused on improving context extraction and LLM reasoning
-- Suitable for learning and experimentation
-
----
+MIT License.
