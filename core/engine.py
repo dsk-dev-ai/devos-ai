@@ -1,64 +1,38 @@
-from core.parser import get_code_files, read_files
+from __future__ import annotations
 
-PRIORITY = ["main", "app", "engine", "cli", "api"]
-
-
-def rank_files(files):
-    scored = []
-
-    for f in files:
-        score = 0
-        name = f.lower()
-
-        for p in PRIORITY:
-            if p in name:
-                score += 5
-
-        if "core" in name or "llm" in name:
-            score += 3
-
-        scored.append((score, f))
-
-    scored.sort(reverse=True)
-    return [f for _, f in scored]
+from core.v3 import BuildOptions
+from core.v3 import build_context as build_context_v3
+from core.v3 import build_prompt as build_prompt_v3
 
 
-def build_context(repo_path):
-    files = get_code_files(repo_path)
-    ranked = rank_files(files)
+def build_context(
+    repo_path: str,
+    max_files: int = 8,
+    max_chars: int = 1400,
+    include_tests: bool = False,
+) -> str:
+    options = BuildOptions(
+        max_files=max_files,
+        max_chars=max_chars,
+        include_tests=include_tests,
+    )
+    context, _ = build_context_v3(repo_path, options)
+    return context
 
-    top_files = ranked[:5]
-    return read_files(top_files)
+
+def build_context_with_files(
+    repo_path: str,
+    max_files: int = 8,
+    max_chars: int = 1400,
+    include_tests: bool = False,
+) -> tuple[str, list[str]]:
+    options = BuildOptions(
+        max_files=max_files,
+        max_chars=max_chars,
+        include_tests=include_tests,
+    )
+    return build_context_v3(repo_path, options)
 
 
-def build_prompt(context, question):
-    return f"""
-You are a senior software engineer analyzing a real codebase.
-
-STRICT RULES:
-- Use ONLY the given code context
-- Do NOT assume missing features
-- Do NOT mention technologies not present in context
-
-CONTEXT:
-{context}
-
-TASK:
-{question}
-
-Respond in this format:
-
-1. Purpose
-- What this system actually does (based only on code)
-
-2. Architecture
-- Real structure (modules, flow)
-
-3. Key Components
-- Explain actual files/modules found
-
-4. Execution Flow
-- Step-by-step how system works
-
-Keep answer precise, technical, and grounded in code.
-"""
+def build_prompt(context: str, question: str, selected_files: list[str] | None = None) -> str:
+    return build_prompt_v3(context, question, selected_files)
