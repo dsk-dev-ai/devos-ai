@@ -26,7 +26,6 @@ devos-ai/
 ├── llm/
 ├── agents/
 ├── apps/
-├── frontend/
 ├── infrastructure/
 ├── docs/
 └── scripts/

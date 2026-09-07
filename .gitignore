@@ -209,3 +209,5 @@ __marimo__/
 # media bloat
 assets/
 *.webm
+
+frontend/
